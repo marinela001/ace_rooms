@@ -5,6 +5,7 @@ import RegisterModal from './components/modals/RegisterModal'
 import ToasterProvider from './providers/ToasterProvider'
 import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
+import RentModal from './components/modals/RentModal'
 
 const page = async() => {
 
@@ -13,6 +14,7 @@ const page = async() => {
   return (
     <div>
 <ToasterProvider/>
+<RentModal/>
 <LoginModal/>
       <RegisterModal/>
       <NavBar currentUser={currentUser}/>

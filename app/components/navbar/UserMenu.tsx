@@ -9,6 +9,7 @@ import useRegisterModal from '@/app/hooks/userRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
+import useRentModal from '@/app/hooks/useRentModal';
 
 
 interface UserMenuProps{
@@ -22,15 +23,23 @@ const  UserMenu :React.FC<UserMenuProps> = ({
   const [isOpen,setIsOpen] = useState(false)
   const registerModal =  useRegisterModal()
   const loginModal= useLoginModal()
+  const rentModal = useRentModal()
   const toggleOpen = useCallback(()=>{
 setIsOpen((value)=>!value);
   },[])
+
+
+
+  const onRent = useCallback(()=>{
+if(!currentUser) return loginModal.onOpen()
+rentModal.onOpen()
+  },[currentUser,loginModal,rentModal])
   
   return (
     <div className='relative '>
-        <div className="flex flex-row  items-center gap-3 ">
+        <div className="flex flex-row  items-center gap-3 "  >
 
-            <div className="hidden md:block  rounded-full text-sm cursor-pointer p-3 transition bg-neutral-100 hover:bg-gray-200">
+            <div  onClick={onRent} className="hidden md:block  rounded-full text-sm cursor-pointer p-3 transition bg-neutral-100 hover:bg-gray-200" >
 
                 Add your space for rent
             </div>
@@ -82,7 +91,7 @@ setIsOpen((value)=>!value);
     <MenuItem onClick={()=>{} } label={'My favourites'}/>
     <MenuItem onClick={()=>{} } label={'My reservations'}/>
     <MenuItem onClick={()=>{} } label={'My properties'}/>
-    <MenuItem onClick={()=>{} } label={'Rent your home'}/>
+    <MenuItem onClick={()=>{rentModal.onOpen()} } label={'Rent your home'}/>
     <MenuItem onClick={()=>{signOut()} } label={'Log out'}/>
 
 
