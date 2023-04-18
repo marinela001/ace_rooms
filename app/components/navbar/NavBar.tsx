@@ -4,6 +4,7 @@ import Logo from './Logo'
 import Search from './Search'
 import UserMenu from './UserMenu'
 import { SafeUser } from '@/app/types'
+import Categories from './Categories'
 
 interface NavBarProps{
   currentUser:SafeUser|null
@@ -13,7 +14,6 @@ const  NavBar :React.FC<NavBarProps> = ({
   currentUser
 }) => {
 
-  console.log({currentUser})
   return (
     <div className='fixed w-full  z-10 shadow-sm  bg-gray-100 mt-0'>
 
@@ -29,7 +29,7 @@ const  NavBar :React.FC<NavBarProps> = ({
  <UserMenu  currentUser={currentUser}  />
             </div>
         </Container>
-       
+       <Categories/>
       </div>
     </div>
   )
