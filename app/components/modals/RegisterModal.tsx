@@ -2,7 +2,7 @@
 
 import useRegisterModal from '@/app/hooks/userRegisterModal';
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { FieldValues, useForm,SubmitHandler } from 'react-hook-form';
 import Modal from './Modal';
 import Heading from '../Heading';
@@ -12,12 +12,16 @@ import Button from '../Button';
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from 'next-auth/react';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 
 function RegisterModal() {
 
 
     const registerModal =useRegisterModal();
+    const loginModal = useLoginModal();
+
+
     const [isLoading,setIsLoading] = useState(false);
     const { register, handleSubmit,formState: { errors } } = useForm<FieldValues>({
        defaultValues:{
@@ -54,6 +58,12 @@ function RegisterModal() {
 
 
     } 
+
+    const onToggle = useCallback(() => {
+    
+      registerModal.onClose();
+        loginModal.onOpen();
+    }, [loginModal, registerModal])
     
     const bodyContent = (
           
@@ -91,7 +101,7 @@ function RegisterModal() {
         />
      <div className="text-[gray] flex flex-row gap-1 justify-center">
           Already have an acount ?{' '}
-<div className="cursor-pointer" onClick={()=>{registerModal.onClose()}}>
+<div className="cursor-pointer" onClick={()=>{onToggle()}}>
               Log In now</div>
         </div>
       </div>
