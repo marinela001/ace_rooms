@@ -8,6 +8,8 @@ import Heading from '../Heading';
 import { categories } from '@/app/Constants';
 import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
+import CountrySelect from '../inputs/CountrySelect';
+import dynamic from 'next/dynamic';
 enum STEPS{
     CATEGORY = 0,
     LOCATION = 1,
@@ -46,7 +48,13 @@ const RentModal = () => {
     });
 
     const category = watch('category')
+    const location = watch('location')
+//import map dinamically to rerender when location changes because it is not suported in React
+const Map = useMemo(()=>dynamic(()=>import('../Map'),{
+//server side rendering
+ssr:false
 
+}),[location])
 
     const setCustomValue = (id: string, value: any) => {
       setValue(id, value, {
@@ -101,6 +109,25 @@ return 'Back'
       )
     
 
+if(step === STEPS.LOCATION){
+
+bodyContent = (
+
+  <div className='flex flex-col gap-8'>
+
+<Heading title={'Where is your place located?'}
+
+subtitle='Help guests find you'
+/>
+<CountrySelect onChange={(value) => setCustomValue('location', value)} />
+
+<Map center={location?.latlng}/>
+  </div>
+)
+}
+
+
+
   return (
     <div>
     <Modal
@@ -110,7 +137,7 @@ return 'Back'
     actionLabel={actionLabel}
     secondaryActionLabel={secondaryActionLabel}
     secondaryAction={step ===STEPS.CATEGORY ? undefined : onBack}
-    onSubmit={rentModal.onClose}
+    onSubmit={onNext}
     body={bodyContent}
  
     />

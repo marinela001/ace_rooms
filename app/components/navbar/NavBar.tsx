@@ -15,7 +15,7 @@ const  NavBar :React.FC<NavBarProps> = ({
 }) => {
 
   return (
-    <div className='fixed w-full  z-10 shadow-sm  bg-gray-100 mt-0'>
+    <div className='fixed w-full  z-10 shadow-sm bg-gray-100 mt-0'>
 
         
       <div className="border-b-[1px] ">
