@@ -1,7 +1,7 @@
 'use client'
 
 import useCountries from '@/app/hooks/useCountries'
-import { SafeUser } from '@/app/types'
+import { SafeListing, SafeUser } from '@/app/types'
 import { Listing, Reservation } from '@prisma/client'
 import { format } from 'date-fns'
 import { useRouter } from 'next/navigation'
@@ -10,7 +10,7 @@ import Image from 'next/image'
 import HeartButton from '../HeartButton'
 import Button from '../Button'
 interface ListingCardProps{
-    data:Listing,
+    data:SafeListing,
     reservation?:Reservation,
     onAction?:(id:string)=>void,
     disabled?:boolean,
@@ -65,7 +65,7 @@ const ListingCard:React.FC<ListingCardProps> = ({
 
 <Image alt='listing' src={data.imageSrc} className='object-cover  hover:scale-110 transition' fill/>
 <div className='absolute top-3 right-3'>
-    <HeartButton currentUser={user} id={data.id}/>
+    <HeartButton currentUser={user} listingId={data.id}/>
 </div>
             </div>
 
