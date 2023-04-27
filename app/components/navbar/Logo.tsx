@@ -17,7 +17,7 @@ const Logo = () => {
       width="100" 
       alt="ACE BOOKING" 
     />
-    <p className="-ml-8 -mt-5 text-gray-500">
+    <p className="-ml-8 -mt-5 text-rose-500">
 ROOMS 
 
     </p>
