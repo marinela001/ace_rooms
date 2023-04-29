@@ -6,6 +6,12 @@ import { IconType } from 'react-icons'
 import Avatar from '../navbar/Avatar'
 import ListingCategory from './ListingCategory'
 import dynamic from 'next/dynamic'
+   //import map dinamically to rerender when location changes because it is not suported in React
+   const Map = dynamic(()=>import('../Map'),{
+    //server side rendering
+    ssr:false
+    
+    })
 interface ListingInfoProps{
 user:SafeUser,
 description:string,
@@ -33,18 +39,13 @@ const ListingInfo:React.FC<ListingInfoProps> = ({
 
    const coordinates = getByValue(locationValue)?.latlng;
 
-   //import map dinamically to rerender when location changes because it is not suported in React
-const Map = dynamic(()=>import('../Map'),{
-    //server side rendering
-    ssr:false
-    
-    })
+
 
   return (
     <div className='flex flex-col gap-8'>
       <div className="text-xl font-semibold flex flex-row items-center gap-4">
 
-      <div className="">Hosted by {user.name}</div>  
+      <div className="">Hosted by <span className='text-rose-500'>{user.name}</span></div>  
       <Avatar src={user.image}/>
       </div>
       <div className="font-light flex flex-row items-center gap-4 text-neutral-500">
