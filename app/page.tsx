@@ -1,16 +1,18 @@
 import React from 'react'
 import Container from './components/Container'
 import EmptyState from './components/EmptyState';
-import getListings from './actions/getListings';
+import getListings, { IListingsParams } from './actions/getListings';
 import getCurrentUser from './actions/getCurrentUser';
 import { Listing } from '@prisma/client';
 import ListingCard from './components/listing/ListingCard';
 import { SafeListing } from './types';
 
-
-const page = async() => {
+interface HomeParams{
+  searchParams:IListingsParams
+}
+const page = async({searchParams}:HomeParams) => {
  const currentUser = await getCurrentUser()
-  const listing = await getListings()
+  const listing = await getListings(searchParams)
   if(listing.length === 0){
     return (<EmptyState showReset/>)
   }
