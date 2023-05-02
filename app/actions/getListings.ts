@@ -16,7 +16,7 @@ export default async function getListings(
 ) {
   try {
     const {
-      userId,
+      userId = null,
       roomCount, 
       guestCount, 
       bathroomCount, 
