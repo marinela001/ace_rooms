@@ -7,6 +7,8 @@ import { Listing } from '@prisma/client';
 import ListingCard from './components/listing/ListingCard';
 import { SafeListing } from './types';
 
+
+export const dynamic = 'force-dynamic'
 interface HomeParams{
   searchParams:IListingsParams
 }
