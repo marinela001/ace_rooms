@@ -6,6 +6,7 @@ import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import RentModal from './components/modals/RentModal'
 import './globals.css'
+import SearchModal from './components/modals/SearchModal'
 
 export const metadata = {
   title: 'ACE',
@@ -23,6 +24,7 @@ export default async function RootLayout({
     <html lang="en">
       <body >
           <ToasterProvider />
+          <SearchModal/>
           <LoginModal />
           <RegisterModal />
           <RentModal />
