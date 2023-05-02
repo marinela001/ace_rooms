@@ -24,7 +24,7 @@ disabled
 
 }) => {
   return (
-    <div className='bg-white rounded-xl overflow-hidden border-[1px] border-neutral-200 ml-9'>
+    <div className='bg-white rounded-xl overflow-hidden border-[1px] border-neutral-200 md:ml-9'>
       
       <div className='flex flex-row items-center gap-1 p-4'><div className="font-semibold text-xl">$ {price}</div>
       <div className='text-neutral-500'>night</div>

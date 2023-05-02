@@ -52,16 +52,17 @@ rentModal.onOpen()
           p-4
           md:py-1
           md:px-2
-          border-[1px] 
-          border-neutral-200 
+          md:border-[1px] 
+         md:border-neutral-200 
           flex 
           flex-row 
           items-center 
-          gap-3 
+          gap-1
           rounded-full 
           cursor-pointer 
           hover:shadow-md 
           transition
+          m-1
           "
         >
             <AiOutlineMenu/>
