@@ -14,8 +14,9 @@ module.exports = {
       repo : 'git@github.com:marinela001/ace_rooms.git',
       path : '/home/ubuntu',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+      'post-deploy' : 'source ~/.nvm/nvm.sh && npm install && npm run build && pm2 reload ecosystem.config.js --env production',
+      'pre-setup': '',
+      'ssh_options':'ForwardAge=yes'
     }
   }
 };
