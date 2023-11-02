@@ -10,7 +10,7 @@ module.exports = {
 	    key:"test.pem",
       user : 'ubuntu',
       host : '3.72.85.69',
-      ref  : 'origin/master',
+      ref  : 'origin/main',
       repo : 'git@github.com:marinela001/ace_rooms.git',
       path : '/home/ubuntu/ace_rooms',
       'pre-deploy-local': '',
